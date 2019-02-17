@@ -21,7 +21,7 @@ function sundhed($BMI) //resultatet af bmi beregningen
 	return $result;
 }
 ?>
-<html>
+<html lang="dk">
 <head>
 	<title>BMI beregner</title> <!-- Overskrift -->
 	<meta charset="UTF-8">
