@@ -1,13 +1,13 @@
 <?php
-function indexberegning($hojde,$vagt)
+function indexberegning($hojde,$vagt) //beregning af bmi
 {
 	$hojde= $hojde /100;
 	$hojde = $hojde * $hojde;
 	$BMI = $vagt / $hojde;
-	$BMI = round($BMI,2);
+	$BMI = round($BMI,2); //afrunding til 2 decimaler
 	return $BMI;
 }
-function sundhed($BMI)
+function sundhed($BMI) //resultatet af bmi beregningen
 {
 	$result = '';
 	if($BMI < 15){$result = 'Meget alvorlig undervægtig';}
@@ -23,7 +23,7 @@ function sundhed($BMI)
 ?>
 <html>
 <head>
-	<title>BMI beregner</title>
+	<title>BMI beregner</title> <!-- Overskrift -->
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -46,29 +46,29 @@ function sundhed($BMI)
 	</script>
 	<p align="center"><span style="font-size:30px">BEREGN DIT BMI HER</span></p>
 	<div align="left" style="padding-left:25%;">
-	<form method="post" class="BMI">
+	<form method="post" class="index"> <!-- class skal være navnet på denne fil, fordi koden til php-beregningen står i denne fil. Havde der været en ekstern fil med selve php-koden var navnet på den skrevet ind -->
 		<table border="0">
 			<tr>
 				<td><label for="hojde">Din højde I cm:</label></td>
-				<td><input type="text" name="hojde" id="hojde" value=""></td>
+				<td><input type="text" name="hojde" id="hojde" value=""></td> <!--Input felt-->
 			</tr>
 			<tr>
 				<td><label for="vagt">Din vægt i kg: </label></td>
-				<td><input type="text" name="vagt" id="vagt" value=""></td>		
+				<td><input type="text" name="vagt" id="vagt" value=""></td>	 <!--Input felt-->	
 			</tr>
 			<tr>
 				<td></td>
-				<td align="right"><input type="submit" value="BEREGN BMI"></td>
+				<td align="right"><input type="submit" value="BEREGN BMI"></td>  <!--Knap -->
 			</tr>
 		</table>
 	</form>
 	</div>
 	<?php
 		if (isset($_POST['hojde'])){
-			$hojde = $_POST['hojde'];
-			$vagt = $_POST['vagt'];
-			$BMI = indexberegning($hojde,$vagt);
-			$sund = sundhed($BMI);
+			$hojde = $_POST['hojde']; //Henter information fra formen
+			$vagt = $_POST['vagt']; // Henter information fra formen
+			$BMI = indexberegning($hojde,$vagt); //Kalder metode beregneren og retunere et tal
+			$sund = sundhed($BMI); // Tallet fra bmi sendes til metoden der retunere hvilken besked brugeren af bmi-beregneren skal modtage
 			echo "<div align='left' style='padding-left:25%; padding-bottom:30px;'>";
 			echo "Din BMI er: ".$BMI;
 			echo "<br>";
