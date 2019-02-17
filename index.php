@@ -28,24 +28,8 @@ function sundhed($BMI) //resultatet af bmi beregningen
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-	<script>
-	$(document).ready(function(){
-	  $(".BMI").submit(function (e){
-		if ($("#hojde").val() == ""){
-		  $("#hojde").css('box-shadow', '0px 0px 2px red');
-		  alert('Indtast din højde, tak');
-		  e.preventDefault(); 
-		}
-		if ($("#vagt").val() == ""){
-		  $("#vagt").css('box-shadow', '0px 0px 2px red');
-		  alert('Indtast vægt, tak');
-		  e.preventDefault(); 
-		}
-	  });
-	});
-	</script>
-	<p align="center"><span style="font-size:30px">BEREGN DIT BMI HER</span></p>
-	<div align="left" style="padding-left:25%;">
+	<p><span style="font-size:30px">BEREGN DIT BMI HER</span></p>
+	<div style="align:left;">
 	<form method="post" class="index"> <!-- class skal være navnet på denne fil, fordi koden til php-beregningen står i denne fil. Havde der været en ekstern fil med selve php-koden var navnet på den skrevet ind -->
 		<table border="0">
 			<tr>
@@ -58,7 +42,7 @@ function sundhed($BMI) //resultatet af bmi beregningen
 			</tr>
 			<tr>
 				<td></td>
-				<td align="right"><input type="submit" value="BEREGN BMI"></td>  <!--Knap -->
+				<td style="align:right"><input type="submit" value="BEREGN BMI"></td>  <!--Knap -->
 			</tr>
 		</table>
 	</form>
@@ -69,7 +53,7 @@ function sundhed($BMI) //resultatet af bmi beregningen
 			$vagt = $_POST['vagt']; // Henter information fra formen
 			$BMI = indexberegning($hojde,$vagt); //Kalder metode beregneren og retunere et tal
 			$sund = sundhed($BMI); // Tallet fra bmi sendes til metoden der retunere hvilken besked brugeren af bmi-beregneren skal modtage
-			echo "<div align='left' style='padding-left:25%; padding-bottom:30px;'>";
+			echo "<div>";
 			echo "Din BMI er: ".$BMI;
 			echo "<br>";
 			echo "Din krop er: ".$sund;
